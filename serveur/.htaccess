@@ -1,0 +1,13 @@
+
+# Activation du module de réécriture d'URL :
+RewriteEngine on
+
+# On se base sur ce sous-répertore :
+RewriteBase /CW16_Rest/serveur
+
+# Si le fichier dasn l'url n'existe pas alors :
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# On passe en argument dans la variable "p" la valeur de $1
+# Qui correspond à ce qui es passé après le rewrite base /php2/
+RewriteRule (^.*$) server.php?p=$1 [L,QSA]
